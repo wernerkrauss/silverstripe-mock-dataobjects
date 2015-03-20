@@ -1,0 +1,43 @@
+de:
+  MockDataObject:
+    FIRSTNAME: "Firstname, FirstName, Vorname"
+    LASTNAME: "Surname, LastName, Lastname, Nachname"
+    FULLNAME: "FullName"
+    CITY: "City, Town, Stadt"
+    STATE: "State, Staat"
+    ADDRESS: "Address, Address1, Address2, Adresse"
+    POSTCODE: "Zip, Zipcode, ZipCode, PLZ, Postleitzahl"
+    COUNTRYCODE: "Country, CountryCode, Land"
+    PHONENUMBER: "Phone, PhoneNumber, Fax, Cell, Mobile, Telephone, Phonenumber, Telefon, Tel, Mobil"
+    EMAIL: "Email, EmailAddress"
+    COMPANY: "Company, CompanyName, Organization, Firma"
+    URL: "URL, Website, URI, Webseite"
+    LATITUDE: "Latitude, Lat"
+    LONGITUDE: "Longitude, Lon"
+  MockChildrenController:
+    MENUTITLE: 'Test-Unterseiten hinzufügen'
+  CMSMain:
+    Create: Erstellen
+  MockData:
+    ADDMOCKCHILDREN: 'Test-Unterseiten hinzufügen'
+    ADDMOCKDATA: 'Testdaten hinzufügen'
+    CANCEL: Abbrechen
+    CHOOSEOPTIONS: 'Optionen'
+    CHOOSEPAGETYPE: 'Seitentyp auswählen'
+    CREATE: Erstellen
+    CREATEMOCKRELATED: 'Testdaten für Relationen erstellen'
+    CREATESUCCESS: '{count} Test-Unterseiten unter {title} erstellt'
+    DOWNLOADFILES: 'Test-Dateien herungerladen'
+    DOWNLOADNEW: 'Neue Dateien und Bilder herunterladen'
+    FILESANDIMAGES: 'Dateien und Bilder'
+    FILLWITHMOCKDATA: 'Mit Testdaten füllen'
+    HOWMANYPAGES: 'Wie viele Seiten wollen Sie erstellen?'
+    INCLUDERELATIONS: 'Relationen einschließen'
+    MOCKRECORDS: 'Test-Datensätze'
+    NATIVEONLY: 'Nur Felder dieses Dataenobjekts füllen'
+    RELATEDDATA: 'Relationen'
+    USEEXISTING: 'Bestehende Dateien und Bilder verwenden'
+  MockDataLog:
+    PLURALNAME: 'Mock Data Logs'
+    SINGULARNAME: 'Mock Data Log'
+

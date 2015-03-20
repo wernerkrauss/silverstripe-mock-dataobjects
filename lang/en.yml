@@ -14,3 +14,29 @@ en:
     URL: "URL, Website, URI"
     LATITUDE: "Latitude, Lat"
     LONGITUDE: "Longitude, Lon"
+  MockChildrenController:
+    MENUTITLE: 'Add mock children'
+  CMSMain:
+    Create: Create
+  MockData:
+    ADDMOCKCHILDREN: 'Add mock children'
+    ADDMOCKDATA: 'Add mock data'
+    CANCEL: Cancel
+    CHOOSEOPTIONS: 'Choose options'
+    CHOOSEPAGETYPE: 'Choose the type of page to create'
+    CREATE: Create
+    CREATEMOCKRELATED: 'Create mock data for relations'
+    CREATESUCCESS: 'Created {count} mock children under {title}'
+    DOWNLOADFILES: 'Download mock files'
+    DOWNLOADNEW: 'Download new files and images'
+    FILESANDIMAGES: 'Files and Images'
+    FILLWITHMOCKDATA: 'Fill with mock data'
+    HOWMANYPAGES: 'How many pages do you want to create?'
+    INCLUDERELATIONS: 'Include relations'
+    MOCKRECORDS: 'mock records'
+    NATIVEONLY: 'Only populate native fields'
+    RELATEDDATA: 'Related data'
+    USEEXISTING: 'Use existing files and images'
+  MockDataLog:
+    PLURALNAME: 'Mock Data Logs'
+    SINGULARNAME: 'Mock Data Log'
