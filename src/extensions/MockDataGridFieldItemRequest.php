@@ -1,5 +1,13 @@
 <?php
 
+namespace UncleCheese\MockDataObjects;
+
+use DataExtension;
+use Form;
+use FormAction;
+use Controller;
+
+
 
 /**
  * Injects functionality into {@link GridField} to show a button that adds mock data to

@@ -1,5 +1,8 @@
 <?php
 
+namespace UncleCheese\MockDataObjects;
+
+
 
 /**
  * Defines the methods that are injected into the {@link Boolean} class for
@@ -9,6 +12,8 @@
  * @author Uncle Cheese <unclecheese@leftandmain.com>
  */
 use Faker\Generator;
+use DataExtension;
+
 
 class MockBooleanField extends DataExtension
 {

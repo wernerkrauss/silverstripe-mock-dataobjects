@@ -1,5 +1,8 @@
 <?php
 
+namespace UncleCheese\MockDataObjects;
+
+
 
 /**
  * Defines the methods inherited by all {@link DBField} classes to support
@@ -9,6 +12,10 @@
  * @author Uncle Cheese <unclecheese@leftandmain.com>
  */
 use Faker\Generator;
+use DataExtension;
+use i18n;
+use Config;
+
 
 class MockDBField extends DataExtension
 {

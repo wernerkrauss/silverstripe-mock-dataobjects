@@ -1,5 +1,14 @@
 <?php
 
+namespace UncleCheese\MockDataObjects\Test;
+
+use SapphireTest;
+use MockDataBuilder;
+use DataList;
+use DataObject;
+use TestOnly;
+
+
 
 /**
  * @package silverstripe-mock-dataobjects

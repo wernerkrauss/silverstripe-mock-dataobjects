@@ -1,5 +1,22 @@
 <?php
 
+namespace UncleCheese\MockDataObjects;
+
+use CMSMain;
+use SS_HTTPRequest;
+use SiteTree;
+use FieldList;
+use OptionsetField;
+use LiteralField;
+use NumericField;
+use DropdownField;
+use HiddenField;
+use FormAction;
+use CMSForm;
+use Exception;
+use Controller;
+
+
 
 /**
  * Displays a page for creating mock children in the CMS

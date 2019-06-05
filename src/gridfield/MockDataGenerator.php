@@ -1,5 +1,19 @@
 <?php
 
+namespace UncleCheese\MockDataObjects;
+
+use GridField_HTMLProvider;
+use GridField_DataManipulator;
+use GridField_ActionProvider;
+use Requirements;
+use ArrayData;
+use TextField;
+use CheckboxField;
+use GridField_FormAction;
+use GridField;
+use SS_List;
+
+
 
 /**
  * Defines the component for {@link GridField} that allows for populating the record set

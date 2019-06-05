@@ -1,5 +1,12 @@
 <?php
 
+namespace UncleCheese\MockDataObjects;
+
+use DataExtension;
+use FieldList;
+use FormAction;
+
+
 
 /**
  * Decorates the SiteTree class to add new functionality for mock data management

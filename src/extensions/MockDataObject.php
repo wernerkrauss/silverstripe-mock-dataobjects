@@ -1,5 +1,19 @@
 <?php
 
+namespace UncleCheese\MockDataObjects;
+
+use DataExtension;
+use File;
+use Folder;
+use Director;
+use Image;
+use DB;
+use i18n;
+use Config;
+use Injector;
+use DataList;
+
+
 
 /**
  * Injects functionality into every {@link DataObject} subclass to populate its

@@ -1,5 +1,8 @@
 <?php
 
+namespace UncleCheese\MockDataObjects;
+
+
 /**
  * Defines the methods that are injected into the {@link Decimal} class for
  * generating mock data
@@ -9,6 +12,9 @@
  */
 
 use Faker\Generator;
+use DataExtension;
+use DBField;
+
 
 class MockDecimalField extends DataExtension
 {

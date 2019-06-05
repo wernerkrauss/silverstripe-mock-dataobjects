@@ -1,5 +1,14 @@
 <?php
 
+namespace UncleCheese\MockDataObjects;
+
+use ViewableData;
+use i18n;
+use DBField;
+use ArrayList;
+use DataObject;
+
+
 
 /**
  * A wrapper class for {@link Faker\Generator} that provides easy template

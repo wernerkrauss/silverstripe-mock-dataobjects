@@ -1,5 +1,8 @@
 <?php
 
+namespace UncleCheese\MockDataObjects;
+
+
 
 /**
  * Defines the methods that are injected into the {@link Year} class for
@@ -11,6 +14,8 @@
 
 
 use Faker\Generator;
+use DataExtension;
+
 
 class MockYearField extends DataExtension
 {

@@ -1,5 +1,8 @@
 <?php
 
+namespace UncleCheese\MockDataObjects;
+
+
 /**
  * Defines the methods that are injected into the {@link HTMLText} class for
  * generating mock data
@@ -10,6 +13,8 @@
 
 
 use Faker\Generator;
+use DataExtension;
+
 
 class MockHTMLTextField extends DataExtension
 {

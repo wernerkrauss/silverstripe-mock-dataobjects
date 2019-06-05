@@ -1,5 +1,8 @@
 <?php
 
+namespace UncleCheese\MockDataObjects;
+
+
 /**
  * Defines the methods that are injected into the {@link Date} class for
  * generating mock data
@@ -9,6 +12,8 @@
  */
 
 use Faker\Generator;
+use DataExtension;
+
 
 class MockDateField extends DataExtension
 {

@@ -1,5 +1,15 @@
 <?php
 
+namespace UncleCheese\MockDataObjects;
+
+use Exception;
+use Injector;
+use DataList;
+use SiteTree;
+use DataObject;
+use Director;
+
+
 
 /**
  * This class creates a process that generates mock data records. It accepts an assortment

@@ -1,5 +1,8 @@
 <?php
 
+namespace UncleCheese\MockDataObjects;
+
+
 
 /**
  * Defines the methods that are injected into the {@link Text} class for
@@ -10,6 +13,8 @@
  */
 
 use Faker\Generator;
+use DataExtension;
+
 
 class MockTextField extends DataExtension
 {
