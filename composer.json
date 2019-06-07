@@ -12,13 +12,14 @@
     ],
     "require":
     {
-        "silverstripe/framework": "~3.1",
-	"silverstripe/cms": "~3.1",
+	    "silverstripe/cms": "^4",
         "fzaninotto/faker": "1.1.*@dev"
 
     },
     "extra": {
-	"installer-name": "silverstripe-mock-dataobjects"
+        "expose": [
+            "client/dist"
+        ]
     },
     "replace": {
     	"silverstripe/mock-dataobjects": "*"
