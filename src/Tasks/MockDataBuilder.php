@@ -55,7 +55,7 @@ class MockDataBuilder
     /**
      * @var string The foreign key on the child record
      */
-    protected $parentField = "ParentID";
+    protected $parentField = 'ParentID';
 
 
     /**
@@ -145,7 +145,7 @@ class MockDataBuilder
             }
             if ($this->isSiteTree) {
                 $ids[] = $obj->write();
-                $obj->publish("Stage", "Live");
+                $obj->publish('Stage', 'Live');
             }
             $this->log("Created {$this->subjectClass} \"{$obj->getTitle()}\".");
             $i++;
@@ -218,7 +218,7 @@ class MockDataBuilder
 
             if ($this->isSiteTree) {
                 $obj->write();
-                $obj->publish("Stage", "Live");
+                $obj->publish('Stage', 'Live');
             }
 
             $this->log("Updated {$this->subjectClass} \"{$obj->getTitle()}\".");

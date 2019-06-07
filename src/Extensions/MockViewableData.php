@@ -71,7 +71,7 @@ class MockViewableData extends ViewableData
      */
     public function obj($fieldName, $arguments = [],  $cache = false, $cacheName = null)
     {
-        $varchar = DBField::create_field("Varchar", null, $fieldName);
+        $varchar = DBField::create_field('Varchar', null, $fieldName);
         if ($data = $varchar->getDataByFieldName($this->getFaker())) {
             $varchar->setValue($data);
             return $varchar;
@@ -91,7 +91,7 @@ class MockViewableData extends ViewableData
     {
         list($min, $max) = $this->resolveMinMax($minWords, $maxWords, 10);
         $words = rand($min, $max);
-        return DBField::create_field("Varchar", $this->getFaker()->sentence($words));
+        return DBField::create_field('Varchar', $this->getFaker()->sentence($words));
     }
 
 
@@ -116,7 +116,7 @@ class MockViewableData extends ViewableData
     public function Sentences($minSentences = 1, $maxSentences = null)
     {
         list($min, $max) = $this->resolveMinMax($minSentences, $maxSentences, 5);
-        return DBField::create_field("Text", $this->getFaker()->paragraph(rand($min, $max)));
+        return DBField::create_field('Text', $this->getFaker()->paragraph(rand($min, $max)));
     }
 
 
@@ -129,7 +129,7 @@ class MockViewableData extends ViewableData
     public function Number($minNum = 0, $maxNum = null)
     {
         list($min, $max) = $this->resolveMinMax($minNum, $maxNum, 1000);
-        return DBField::create_field("Int", rand($min, $max));
+        return DBField::create_field('Int', rand($min, $max));
     }
 
 
@@ -154,7 +154,7 @@ class MockViewableData extends ViewableData
     {
         list($min, $max) = $this->resolveMinMax($minPrice, $maxPrice, 1000);
         $rand = mt_rand($min * 100, $max * 100);
-        return DBField::create_field("Currency", $rand / 100);
+        return DBField::create_field('Currency', $rand / 100);
     }
 
 
@@ -174,7 +174,7 @@ class MockViewableData extends ViewableData
      */
     public function DateAndTime()
     {
-        return DBField::create_field("SS_DateTime", $this->getFaker()->dateTimeThisYear()->format('Y-m-d H:i:s'));
+        return DBField::create_field('SS_DateTime', $this->getFaker()->dateTimeThisYear()->format('Y-m-d H:i:s'));
     }
 
 
@@ -186,7 +186,7 @@ class MockViewableData extends ViewableData
      */
     public function Float()
     {
-        return DBField::create_field("Float", mt_rand(1, 999) / mt_rand(1, 999));
+        return DBField::create_field('Float', mt_rand(1, 999) / mt_rand(1, 999));
     }
 
 
@@ -202,13 +202,13 @@ class MockViewableData extends ViewableData
         $paragraphs = rand($min, $max);
         $faker = $this->getFaker();
         $i = 0;
-        $html = "";
+        $html = '';
         while ($i < $paragraphs) {
-            $html .= "<p>" . $faker->paragraph(rand(2, 6)) . "</p>";
+            $html .= '<p>' . $faker->paragraph(rand(2, 6)) . '</p>';
             $i++;
         }
 
-        return DBField::create_field("HTMLText", $html);
+        return DBField::create_field('HTMLText', $html);
     }
 
 
@@ -218,7 +218,7 @@ class MockViewableData extends ViewableData
      */
     public function Percentage()
     {
-        return DBField::create_field("Percentage", mt_rand(1, 99) / 100);
+        return DBField::create_field('Percentage', mt_rand(1, 99) / 100);
     }
 
 
@@ -228,7 +228,7 @@ class MockViewableData extends ViewableData
      */
     public function Year()
     {
-        return DBField::create_field("Year", $this->getFaker()->dateTimeThisCentury->format('Y'));
+        return DBField::create_field('Year', $this->getFaker()->dateTimeThisCentury->format('Y'));
     }
 
 
@@ -249,7 +249,7 @@ class MockViewableData extends ViewableData
      */
     public function Latitude()
     {
-        return DBField::create_field("Float", $this->getFaker()->latitude);
+        return DBField::create_field('Float', $this->getFaker()->latitude);
     }
 
 
@@ -259,7 +259,7 @@ class MockViewableData extends ViewableData
      */
     public function Longitude()
     {
-        return DBField::create_field("Float", $this->getFaker()->longitude);
+        return DBField::create_field('Float', $this->getFaker()->longitude);
     }
 
 

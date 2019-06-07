@@ -60,7 +60,7 @@ class MockVarcharField extends DataExtension
                 return $faker->$c;
             }
         }
-        if ($this->owner->hook("FULLNAME")) {
+        if ($this->owner->hook('FULLNAME')) {
             return $faker->name;
         }
 

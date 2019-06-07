@@ -118,7 +118,7 @@ class MockChildrenController extends CMSMain
         $keys = array_keys($pageTypes);
         $fields = new FieldList(
             $typeField = new OptionsetField(
-                "PageType",
+                'PageType',
                 sprintf($numericLabelTmpl, 1, _t('MockData.CHOOSEPAGETYPE', 'Choose the type of page to create')),
                 $pageTypes,
                 reset($keys)
@@ -140,14 +140,14 @@ class MockChildrenController extends CMSMain
 
 
         $actions = new FieldList(
-            FormAction::create("doAddMockChildren", _t('CMSMain.Create', "Create"))
+            FormAction::create('doAddMockChildren', _t('CMSMain.Create', 'Create'))
                 ->addExtraClass('ss-ui-action-constructive')->setAttribute('data-icon', 'accept')
                 ->setUseButtonTag(true)
         );
 
 
         $form = CMSForm::create(
-            $this, "MockChildrenForm", $fields, $actions
+            $this, 'MockChildrenForm', $fields, $actions
         )->setHTMLID('Form_MockChildrenForm');
         $form->setResponseNegotiator($this->getResponseNegotiator());
         $form->addExtraClass(' stacked cms-content center cms-edit-form ' . $this->BaseCSSClasses());
@@ -171,18 +171,18 @@ class MockChildrenController extends CMSMain
             return false;
         }
 
-        $className = isset($data['PageType']) ? $data['PageType'] : "Page";
+        $className = isset($data['PageType']) ? $data['PageType'] : 'Page';
         $builder = new MockDataBuilder($className);
         $builder
             ->setCount((int)$data['Count'])
             ->setIncludeRelations((bool)$data['IncludeRelations'])
             ->setDownloadImages((bool)$data['DownloadImages'])
-            ->setParentField("ParentID")
+            ->setParentField('ParentID')
             ->setParentObj($parentPage);
         try {
             $ids = $builder->generate();
         } catch (Exception $e) {
-            $form->sessionMessage($e->getMessage(), "bad");
+            $form->sessionMessage($e->getMessage(), 'bad');
             return $this->redirectBack();
         }
         $this->response->addHeader(

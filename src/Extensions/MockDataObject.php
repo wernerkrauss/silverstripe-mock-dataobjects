@@ -45,7 +45,7 @@ class MockDataObject extends DataExtension
      */
     public static function get_mock_files()
     {
-        return File::get()->filter("ParentID", self::get_mock_folder()->ID);
+        return File::get()->filter('ParentID', self::get_mock_folder()->ID);
     }
 
 
@@ -56,7 +56,7 @@ class MockDataObject extends DataExtension
      */
     public static function get_mock_folder()
     {
-        return Folder::find_or_make("mock-files");
+        return Folder::find_or_make('mock-files');
     }
 
 
@@ -97,7 +97,7 @@ class MockDataObject extends DataExtension
     public static function download_lorem_image()
     {
         $url = 'http://lorempixel.com/1024/768/?t=' . uniqid();
-        $img_filename = "mock-file-" . uniqid() . ".jpeg";
+        $img_filename = 'mock-file-' . uniqid() . '.jpeg';
 
         $img = fopen('php://temp', 'w+');
 
@@ -170,8 +170,8 @@ class MockDataObject extends DataExtension
     public function fill($config = [])
     {
         $faker = Factory::create(i18n::get_locale());
-        $defaults = Config::inst()->get(MockDataObject::class, "fill_options");
-        $create_limit = Config::inst()->get(MockDataObject::class, "relation_create_limit");
+        $defaults = Config::inst()->get(MockDataObject::class, 'fill_options');
+        $create_limit = Config::inst()->get(MockDataObject::class, 'relation_create_limit');
         $settings = array_merge($defaults, $config);
 
         // Anything that is a core SiteTree field, e.g. "URLSegment", "ShowInMenus", "ParentID",  we don't care about.
@@ -197,12 +197,12 @@ class MockDataObject extends DataExtension
 
 
         foreach ($this->owner->hasOne() as $relation => $className) {
-            $idField = $relation . "ID";
+            $idField = $relation . 'ID';
             $sitetree = ($className == SiteTree::class) || (is_subclass_of($className, SiteTree::class));
-            if ($sitetree && $relation == "Parent") {
+            if ($sitetree && $relation == 'Parent') {
                 continue;
             }
-            $create_limit = Config::inst()->get(MockDataObject::class, "relation_create_limit");
+            $create_limit = Config::inst()->get(MockDataObject::class, 'relation_create_limit');
 
             if (($className == File::class) || (is_subclass_of($className, File::class))) {
                 if ($settings['only_empty'] && $this->owner->$relation()->exists()) {
@@ -217,7 +217,7 @@ class MockDataObject extends DataExtension
                         $this->owner->$idField = $random_file->ID;
                     }
                 }
-            } elseif ($className == "Subsite") {
+            } elseif ($className == 'Subsite') {
                 continue;
             } else {
                 $random_record = DataList::create($className)->sort(DB::get_conn()->random())->first();
@@ -248,7 +248,7 @@ class MockDataObject extends DataExtension
                 if (!$idField) {
                     continue;
                 }
-                $idField .= "ID";
+                $idField .= 'ID';
 
                 $count = rand(1, 10);
                 $i = 0;
@@ -297,8 +297,8 @@ class MockDataObject extends DataExtension
     public function onBeforeDelete()
     {
         $log = MockDataLog::get()->filter([
-            "RecordClass" => $this->owner->ClassName,
-            "RecordID" => $this->owner->ID
+            'RecordClass' => $this->owner->ClassName,
+            'RecordID' => $this->owner->ID
         ])->first();
         if ($log) {
             $log->delete();

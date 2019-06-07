@@ -31,7 +31,7 @@ class MockDBField extends DataExtension
      */
     public function getFakeData(Generator $faker)
     {
-        return "";
+        return '';
     }
 
 
@@ -66,7 +66,7 @@ class MockDBField extends DataExtension
         $list = $user_list ?: $core_list;
 
         if ($list) {
-            $candidates = explode(",", $list);
+            $candidates = explode(',', $list);
             $fieldName = $this->owner->getName();
             foreach ($candidates as $c) {
                 $c = trim($c);

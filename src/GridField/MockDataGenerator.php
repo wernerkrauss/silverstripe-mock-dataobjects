@@ -112,7 +112,7 @@ class MockDataGenerator implements GridField_HTMLProvider, GridField_DataManipul
      */
     public function handleAction(GridField $gridField, $actionName, $arguments, $data)
     {
-        if ($actionName !== "mockdata") {
+        if ($actionName !== 'mockdata') {
             return;
         }
         $state = $gridField->State->MockDataGenerator;

@@ -36,7 +36,7 @@ class MockDataTask extends BuildTask
     /**
      * @var string The title of the task
      */
-    protected $title = "Generate or populate records with mock data";
+    protected $title = 'Generate or populate records with mock data';
 
 
     /**
@@ -57,30 +57,30 @@ class MockDataTask extends BuildTask
 
         // The "cleanup" task has a different argument signature. Because it doesn't require the specification of a class.
         // This block normalizes that.
-        if ($args[0] == "cleanup") {
+        if ($args[0] == 'cleanup') {
             if (!isset($args[1])) {
-                $args[1] = "__all__";
+                $args[1] = '__all__';
             }
-            if ($args[1] != "__all__") {
+            if ($args[1] != '__all__') {
                 if (!class_exists($args[1]) || !is_subclass_of($args[1], DataObject::class)) {
-                    $this->showError("Please specify a valid DataObject descendant class.");
+                    $this->showError('Please specify a valid DataObject descendant class.');
                 }
             }
 
             return $this->cleanup($args[1]);
         } else {
             if (count($args) < 2) {
-                $this->showError("Usage: MockDataTask <generate|populate|cleanup> <classname> [options]");
+                $this->showError('Usage: MockDataTask <generate|populate|cleanup> <classname> [options]');
             }
 
             list($operation, $className) = $args;
 
             if (!class_exists($className) || !is_subclass_of($className, DataObject::class)) {
-                $this->showError("Please specify a valid DataObject descendant class.");
+                $this->showError('Please specify a valid DataObject descendant class.');
             }
 
             if (!in_array($operation, ['generate', 'populate', 'cleanup'])) {
-                $this->showError("Please specify a valid operation (\"generate\", \"populate\", or \"cleanup\")");
+                $this->showError('Please specify a valid operation ("generate", "populate", or "cleanup")');
             }
 
 
@@ -100,7 +100,7 @@ class MockDataTask extends BuildTask
     {
         $count = $this->request->getVar('count') ?: 10;
         $parent = $this->request->getVar('parent');
-        $parentField = $this->request->getVar('parentField') ?: "ParentID";
+        $parentField = $this->request->getVar('parentField') ?: 'ParentID';
 
         try {
             $builder = MockDataBuilder::create($className);
@@ -110,8 +110,8 @@ class MockDataTask extends BuildTask
         }
 
         $builder
-            ->setOnlyEmpty($this->request->getVar('onlyEmpty') === "false" ? false : true)
-            ->setDownloadImages($this->request->getVar('downloadImages') === "false" ? false : true)
+            ->setOnlyEmpty($this->request->getVar('onlyEmpty') === 'false' ? false : true)
+            ->setDownloadImages($this->request->getVar('downloadImages') === 'false' ? false : true)
             ->setCount($count)
             ->setParentIdentifier($parent ?: null)
             ->setParentField($parentField);
@@ -132,14 +132,14 @@ class MockDataTask extends BuildTask
      */
     protected function cleanup($className)
     {
-        $classes = ($className == "__all__") ? MockDataLog::get()->column('RecordClass') : [$className];
+        $classes = ($className == '__all__') ? MockDataLog::get()->column('RecordClass') : [$className];
         foreach ($classes as $recordClass) {
             $logs = MockDataLog::get()->filter(['RecordClass' => $recordClass]);
             $ids = $logs->column('RecordID');
             $list = DataList::create($recordClass)->byIDs($ids);
-            $this->writeOut("Deleting " . $list->count() . " $recordClass records");
+            $this->writeOut('Deleting ' . $list->count() . " $recordClass records");
             $list->removeAll();
-            $this->writeOut("Done.");
+            $this->writeOut('Done.');
             $logs->removeAll();
         }
     }

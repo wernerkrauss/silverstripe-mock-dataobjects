@@ -27,7 +27,7 @@ class MockDataGridFieldItemRequest extends DataExtension
      */
     public function updateItemEditForm(Form $form)
     {
-        $form->Actions()->push(FormAction::create("doAddMockData",
+        $form->Actions()->push(FormAction::create('doAddMockData',
             _t('MockData.FILLWITHMOCKDATA', 'Fill with mock data')));
     }
 
@@ -47,8 +47,8 @@ class MockDataGridFieldItemRequest extends DataExtension
             'download_images' => false
         ]);
 
-        Controller::curr()->getResponse()->addHeader("X-Pjax", "Content");
-        $link = Controller::join_links($this->owner->gridField->Link(), "item", $this->owner->record->ID);
+        Controller::curr()->getResponse()->addHeader('X-Pjax', 'Content');
+        $link = Controller::join_links($this->owner->gridField->Link(), 'item', $this->owner->record->ID);
         return Controller::curr()->redirect($link);
     }
 }
