@@ -149,7 +149,7 @@ class MockDataObject extends DataExtension
      */
     public function Fake()
     {
-        return $this->fakeInstance ? $this->fakeInstance : ($this->fakeInstance = MockViewableData::create());
+        return $this->fakeInstance ?: ($this->fakeInstance = MockViewableData::create());
     }
 
 

@@ -38,7 +38,7 @@ class MockViewableData extends ViewableData
      */
     protected function getFaker()
     {
-        return $this->faker ? $this->faker : ($this->faker = Faker\Factory::create(i18n::get_locale()));
+        return $this->faker ?: ($this->faker = Faker\Factory::create(i18n::get_locale()));
     }
 
 

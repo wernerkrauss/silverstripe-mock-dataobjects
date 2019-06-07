@@ -171,7 +171,7 @@ class MockChildrenController extends CMSMain
             return false;
         }
 
-        $className = isset($data['PageType']) ? $data['PageType'] : 'Page';
+        $className = $data['PageType'] ?? 'Page';
         $builder = new MockDataBuilder($className);
         $builder
             ->setCount((int)$data['Count'])
