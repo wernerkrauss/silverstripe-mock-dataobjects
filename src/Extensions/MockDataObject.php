@@ -9,6 +9,7 @@ use SilverStripe\Assets\Image;
 use SilverStripe\Control\Director;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\Core\Injector\Injector;
+use SilverStripe\Core\Manifest\ModuleLoader;
 use SilverStripe\i18n\i18n;
 use SilverStripe\ORM\DataExtension;
 use SilverStripe\ORM\DataList;
@@ -65,12 +66,10 @@ class MockDataObject extends DataExtension
      */
     public static function install_mock_files()
     {
-        //@todo: use vendor module folder
-        $sample_path = Director::baseFolder() . '/' . MOCK_DATAOBJECTS_DIR . '/lib';
+        $sample_path = ModuleLoader::getModule('unclecheese/mock-dataobjects')->getPath() . '/lib';
         $sample_files = glob($sample_path . '/*.jpeg');
-        $folder = self::get_mock_folder();
         $installed_sample_files = self::get_mock_files();
-        if (sizeof($sample_files) <= $installed_sample_files->count()) {
+        if (count($sample_files) <= $installed_sample_files->count()) {
             return;
         }
 
