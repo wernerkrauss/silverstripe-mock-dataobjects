@@ -68,24 +68,24 @@ class MockDataTask extends BuildTask
             }
 
             return $this->cleanup($args[1]);
-        } else {
-            if (count($args) < 2) {
-                $this->showError('Usage: MockDataTask <generate|populate|cleanup> <classname> [options]');
-            }
-
-            list($operation, $className) = $args;
-
-            if (!class_exists($className) || !is_subclass_of($className, DataObject::class)) {
-                $this->showError('Please specify a valid DataObject descendant class.');
-            }
-
-            if (!in_array($operation, ['generate', 'populate', 'cleanup'])) {
-                $this->showError('Please specify a valid operation ("generate", "populate", or "cleanup")');
-            }
-
-
-            $this->runBuilderCommand($operation, $className);
         }
+
+        if (count($args) < 2) {
+            $this->showError('Usage: MockDataTask <generate|populate|cleanup> <classname> [options]');
+        }
+
+        list($operation, $className) = $args;
+
+        if (!class_exists($className) || !is_subclass_of($className, DataObject::class)) {
+            $this->showError('Please specify a valid DataObject descendant class.');
+        }
+
+        if (!in_array($operation, ['generate', 'populate', 'cleanup'])) {
+            $this->showError('Please specify a valid operation ("generate", "populate", or "cleanup")');
+        }
+
+
+        $this->runBuilderCommand($operation, $className);
     }
 
 
@@ -110,8 +110,8 @@ class MockDataTask extends BuildTask
         }
 
         $builder
-            ->setOnlyEmpty($this->request->getVar('onlyEmpty') === 'false' ? false : true)
-            ->setDownloadImages($this->request->getVar('downloadImages') === 'false' ? false : true)
+            ->setOnlyEmpty($this->request->getVar('onlyEmpty') !== 'false')
+            ->setDownloadImages($this->request->getVar('downloadImages') !== 'false')
             ->setCount($count)
             ->setParentIdentifier($parent ?: null)
             ->setParentField($parentField);

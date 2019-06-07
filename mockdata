@@ -36,10 +36,8 @@ function switch_to_project_root() {
         foreach (scandir('.') as $file) {
             if ($file == '..' || $file == '.')
                 continue;
-            if (is_dir($file)) {
-                if (file_exists($file . '/cli-script.php')) {
-                    return $file;
-                }
+            if (is_dir($file) && file_exists($file . '/cli-script.php')) {
+                return $file;
             }
         }
         chdir(dirname(getcwd()));

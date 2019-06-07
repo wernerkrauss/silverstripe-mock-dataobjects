@@ -212,10 +212,8 @@ class MockDataObject extends DataExtension
                     if ($image = self::download_lorem_image()) {
                         $this->owner->$idField = $image->ID;
                     }
-                } else {
-                    if ($random_file = self::get_random_local_image()) {
-                        $this->owner->$idField = $random_file->ID;
-                    }
+                } elseif ($random_file = self::get_random_local_image()) {
+                    $this->owner->$idField = $random_file->ID;
                 }
             } elseif ($className == 'Subsite') {
                 continue;
