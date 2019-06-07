@@ -30,7 +30,7 @@ class MockDataObjectGridFieldConfig extends Extension
     public function updateConfig()
     {
         $pagers = $this->owner->getComponentsByType(GridFieldPaginator::class);
-        $before = ($pagers->count()) ? GridFieldPaginator::class : null;
+        $before = $pagers->count() ? GridFieldPaginator::class : null;
         $this->owner->addComponent(new MockDataGenerator(), $before);
     }
 }

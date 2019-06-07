@@ -198,13 +198,13 @@ class MockDataObject extends DataExtension
 
         foreach ($this->owner->hasOne() as $relation => $className) {
             $idField = $relation . 'ID';
-            $sitetree = ($className == SiteTree::class) || (is_subclass_of($className, SiteTree::class));
+            $sitetree = ($className == SiteTree::class) || is_subclass_of($className, SiteTree::class);
             if ($sitetree && $relation == 'Parent') {
                 continue;
             }
             $create_limit = Config::inst()->get(MockDataObject::class, 'relation_create_limit');
 
-            if (($className == File::class) || (is_subclass_of($className, File::class))) {
+            if (($className == File::class) || is_subclass_of($className, File::class)) {
                 if ($settings['only_empty'] && $this->owner->$relation()->exists()) {
                     continue;
                 }
