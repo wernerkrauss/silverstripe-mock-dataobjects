@@ -15,7 +15,6 @@ namespace UncleCheese\MockDataObjects\FieldTypes;
 use Faker\Generator;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\i18n\Data\Intl\IntlLocales;
-use SilverStripe\i18n\Data\Locales;
 use SilverStripe\i18n\i18n;
 use SilverStripe\ORM\DataExtension;
 

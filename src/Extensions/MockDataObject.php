@@ -176,13 +176,13 @@ class MockDataObject extends DataExtension
 
         // Anything that is a core SiteTree field, e.g. "URLSegment", "ShowInMenus", "ParentID",  we don't care about.
         $omit = DataObject::getSchema()->databaseFields(SiteTree::class, false);
-        $omit = array_merge($omit, $this->owner->config()->mock_blacklist);
+        $omit = array_merge($omit, $this->owner::config()->mock_blacklist);
 
         // Except these two.
         unset($omit['Title']);
         unset($omit['Content']);
 
-        $db = $this->owner->config()->get('db');
+        $db = $this->owner::config()->get('db');
 
         foreach ($db as $fieldName => $fieldType) {
             if (array_key_exists($fieldName, $omit)) {
