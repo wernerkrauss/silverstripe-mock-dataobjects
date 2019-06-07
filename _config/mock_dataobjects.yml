@@ -4,9 +4,6 @@ Name: mockdataobjects
 SilverStripe\ORM\DataObject:
   extensions:
     - UncleCheese\MockDataObjects\Extensions\MockDataObject
-SilverStripe\ORM\FieldType\DBField:
-  extensions:
-    - UncleCheese\MockDataObjects\FieldTypes\MockDBField
 UncleCheese\MockDataObjects\FieldTypes\MockDBField:
   default_lang: en
 UncleCheese\MockDataObjects\Extensions\MockDataObject:
