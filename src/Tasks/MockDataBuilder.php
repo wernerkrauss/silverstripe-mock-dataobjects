@@ -111,8 +111,6 @@ class MockDataBuilder
         }
 
         $this->isSiteTree = is_subclass_of($className, SiteTree::class);
-
-        return $this;
     }
 
 
