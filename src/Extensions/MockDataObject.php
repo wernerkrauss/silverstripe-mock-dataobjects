@@ -96,33 +96,37 @@ class MockDataObject extends DataExtension
      */
     public static function download_lorem_image()
     {
-        $url = 'http://lorempixel.com/1024/768?t=' . uniqid();
+        $url = 'http://lorempixel.com/1024/768/?t=' . uniqid();
         $img_filename = "mock-file-" . uniqid() . ".jpeg";
 
-        $img = self::get_mock_folder()->getFullPath() . $img_filename;
+        $img = fopen('php://temp', 'w+');
 
         if (ini_get('allow_url_fopen')) {
-            file_put_contents($img, file_get_contents($url));
+            $tmpImg = file_get_contents($url);
+            fwrite($img, $tmpImg);
         } else {
             $ch = curl_init($url);
-            $fp = fopen($img, 'wb');
-            curl_setopt($ch, CURLOPT_FILE, $fp);
+            curl_setopt($ch, CURLOPT_FILE, $img);
             curl_setopt($ch, CURLOPT_HEADER, 0);
             curl_exec($ch);
             curl_close($ch);
-            fclose($fp);
         }
 
-        if (!file_exists($img) || !filesize($img)) {
+        //check if resource has data
+
+        if (ftell($img) === 0) {
             return false;
         }
 
+        rewind($img);
+
         $i = Image::create();
-        $i->Filename = self::get_mock_folder()->Filename . $img_filename;
+        $i->setFromStream($img, $img_filename);
         $i->Title = $img_filename;
         $i->Name = $img_filename;
         $i->ParentID = self::get_mock_folder()->ID;
         $i->write();
+        $i->doPublish();
 
         return $i;
     }
