@@ -14,6 +14,8 @@ namespace UncleCheese\MockDataObjects\FieldTypes;
 
 use Faker\Generator;
 use SilverStripe\Core\Config\Config;
+use SilverStripe\i18n\Data\Intl\IntlLocales;
+use SilverStripe\i18n\Data\Locales;
 use SilverStripe\i18n\i18n;
 use SilverStripe\ORM\DataExtension;
 
@@ -53,14 +55,14 @@ class MockDBField extends DataExtension
     {
         $list = false;
         $current_locale = i18n::get_locale();
-        $default_lang = Config::inst()->forClass(MockDBField::class)->default_lang;
-        $default_locale = i18n::get_locale_from_lang($default_lang);
+        $default_lang = Config::forClass(MockDBField::class)->default_lang;
+        $default_locale = IntlLocales::create()->localeFromLang($default_lang);
 
         i18n::set_locale($default_locale);
-        $core_list = _t('MockDataObject.' . $name);
+        $core_list = _t('MockDataObject.' . $name, $name);
 
         i18n::set_locale($current_locale);
-        $user_list = _t('MockDataObject.' . $name);
+        $user_list = _t('MockDataObject.' . $name, $name);
 
         $list = $user_list ?: $core_list;
 

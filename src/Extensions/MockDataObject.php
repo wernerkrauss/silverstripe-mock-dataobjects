@@ -178,10 +178,10 @@ class MockDataObject extends DataExtension
         unset($omit['Title']);
         unset($omit['Content']);
 
-        $db = DataObject::getSchema()->databaseFields($this->owner->ClassName, true);
+        $db = $this->owner->config()->get('db');
 
         foreach ($db as $fieldName => $fieldType) {
-            if (in_array($fieldName, $omit)) {
+            if (array_key_exists($fieldName, $omit)) {
                 continue;
             }
             if ($settings['only_empty'] && $this->owner->obj($fieldName)->exists()) {
