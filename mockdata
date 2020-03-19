@@ -32,14 +32,12 @@ function parse_parameters($noopt = array()) {
 
 
 function switch_to_project_root() {
-    while (dirname(getcwd()) != "/") {
-        foreach (scandir(".") as $file) {
-            if ($file == ".." || $file == ".")
+    while (dirname(getcwd()) != '/') {
+        foreach (scandir('.') as $file) {
+            if ($file == '..' || $file == '.')
                 continue;
-            if (is_dir($file)) {
-                if (file_exists($file . "/cli-script.php")) {
-                    return $file;
-                }
+            if (is_dir($file) && file_exists($file . '/cli-script.php')) {
+                return $file;
             }
         }
         chdir(dirname(getcwd()));
@@ -52,15 +50,15 @@ function switch_to_project_root() {
 function run_process($cmd)
 {
    $descriptorspec = array(
-       0 => array("pipe", "r"),  // stdin is a pipe that the child will read from
-       1 => array("pipe", "w"),  // stdout is a pipe that the child will write to
-       2 => array("pipe", "w") // stderr is a file to write to
+       0 => array('pipe', 'r'),  // stdin is a pipe that the child will read from
+       1 => array('pipe', 'w'),  // stdout is a pipe that the child will write to
+       2 => array('pipe', 'w') // stderr is a file to write to
    );
 
    $pipes= array();
    $process = proc_open($cmd, $descriptorspec, $pipes);
 
-   $output= "";
+   $output= '';
 
    if (!is_resource($process)) return false;
 
@@ -115,7 +113,7 @@ $help = "
 ";
 
 if(!$framework_dir = switch_to_project_root()) {
-	echo "Could not find the root of a SilverStripe project in this directory!";
+	echo 'Could not find the root of a SilverStripe project in this directory!';
 	die();
 }
 
@@ -128,8 +126,8 @@ if(!isset($PARAMS[1]) || !in_array($PARAMS[1], array('generate','populate','clea
 }
 
 if(!isset($PARAMS[2])) {
-  if($PARAMS[1] == "cleanup") {
-    $PARAMS[2] = "__all__";
+  if($PARAMS[1] == 'cleanup') {
+    $PARAMS[2] = '__all__';
   }
   else {
     die($help);
@@ -138,19 +136,19 @@ if(!isset($PARAMS[2])) {
 
 $operation = $PARAMS[1];
 $className = $PARAMS[2];
-if($operation == "help") die($help);
+if($operation == 'help') die($help);
 
 
 $args = array();
-$args[] = isset($PARAMS['parent']) ? "--parent=".$PARAMS['parent'] : "";
-$args[] = isset($PARAMS['parent-field']) ? "--parentField=".$PARAMS['parent-field'] : "";
-$args[] = isset($PARAMS['count']) ? "--count=" . $PARAMS['count'] : "";
-$args[] = isset($PARAMS['no-releations']) ? "--includeRelations=false" : "";
-$args[] = isset($PARAMS['no-downloads']) ? "--downloadImages=false" : "";
-$args[] = isset($PARAMS['relation-limit']) ? "--relationCreateLimit=".$PARAMS['relation-limit'] : "";
-$args[] = isset($PARAMS['overwrite']) ? "--onlyEmpty=false" : "";
+$args[] = isset($PARAMS['parent']) ? '--parent=' .$PARAMS['parent'] : '';
+$args[] = isset($PARAMS['parent-field']) ? '--parentField=' .$PARAMS['parent-field'] : '';
+$args[] = isset($PARAMS['count']) ? '--count=' . $PARAMS['count'] : '';
+$args[] = isset($PARAMS['no-releations']) ? '--includeRelations=false' : '';
+$args[] = isset($PARAMS['no-downloads']) ? '--downloadImages=false' : '';
+$args[] = isset($PARAMS['relation-limit']) ? '--relationCreateLimit=' .$PARAMS['relation-limit'] : '';
+$args[] = isset($PARAMS['overwrite']) ? '--onlyEmpty=false' : '';
 
-$arguments = implode(" ", $args);
+$arguments = implode(' ', $args);
 $cmd = $framework_dir . "/sake dev/tasks/MockDataTask $operation $className $arguments  --flush=all";
 run_process($cmd);
 echo "\n\n";

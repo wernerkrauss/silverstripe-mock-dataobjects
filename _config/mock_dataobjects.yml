@@ -1,43 +1,36 @@
 ---
 Name: mockdataobjects
 ---
-
-DataObject:
+SilverStripe\ORM\DataObject:
   extensions:
-    - MockDataObject
-
-DBField:
-  extensions:
-    - MockDBField
-MockDBField:
+    - UncleCheese\MockDataObjects\Extensions\MockDataObject
+UncleCheese\MockDataObjects\FieldTypes\MockDBField:
   default_lang: en
-
-MockDataObject:
+UncleCheese\MockDataObjects\Extensions\MockDataObject:
   fill_options:
     include_relations: true
     download_images: true
     only_empty: true
   relation_create_limit: 5
-
-Member:
+SilverStripe\Security\Member:
   mock_blacklist:
     - PasswordEncryption
-SiteTree:
+SilverStripe\CMS\Model\SiteTree:
   extensions:
-    - MockDataSiteTree
-CMSMain:
+    - UncleCheese\MockDataObjects\Extensions\MockDataSiteTree
+SilverStripe\CMS\Controllers\CMSMain:
   extensions:
-    - MockDataCMS
-GridFieldConfig_RecordEditor:
+    - UncleCheese\MockDataObjects\Extensions\MockDataCMS
+SilverStripe\Forms\GridField\GridFieldConfig_RecordEditor:
   extensions:
-    - MockDataObjectGridFieldConfig
+    - UncleCheese\MockDataObjects\Extensions\MockDataObjectGridFieldConfig
 ---
 Name: gridfieldbuttons
 Before: betterbuttons
 ---
-GridFieldDetailForm_ItemRequest:
+SilverStripe\Forms\GridField\GridFieldDetailForm_ItemRequest:
   extensions:
-    - MockDataGridFieldItemRequest
-LeftAndMain:
+    - UncleCheese\MockDataObjects\Extensions\MockDataGridFieldItemRequest
+SilverStripe\Admin\LeftAndMain:
   extra_requirements_javascript:
-    - silverstripe-mock-dataobjects/javascript/mock_dataobjects.js
+    - unclecheese/mock-dataobjects:client/dist/javascript/mock_dataobjects.js

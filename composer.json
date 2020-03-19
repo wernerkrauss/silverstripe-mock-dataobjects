@@ -1,7 +1,7 @@
 {
     "name": "unclecheese/mock-dataobjects",
     "description": "Allows DataObjects to self-populate intelligently using fake data",
-    "type": "silverstripe-module",
+    "type": "silverstripe-vendormodule",
     "keywords": ["silverstripe", "dataobject", "content", "seeding", "fake"],
 	"license": "BSD-3-Clause",
     "authors": [
@@ -12,13 +12,20 @@
     ],
     "require":
     {
-        "silverstripe/framework": "~3.1",
-	"silverstripe/cms": "~3.1",
-        "fzaninotto/faker": "1.1.*@dev"
+	    "silverstripe/cms": "^4",
+        "fzaninotto/faker": "^1"
 
     },
     "extra": {
-	"installer-name": "silverstripe-mock-dataobjects"
+        "expose": [
+            "client/dist"
+        ]
+    },
+    "autoload": {
+        "psr-4": {
+            "UncleCheese\\MockDataObjects\\": "src/",
+            "UncleCheese\\MockDataObjects\\Test\\": "tests/"
+        }
     },
     "replace": {
     	"silverstripe/mock-dataobjects": "*"

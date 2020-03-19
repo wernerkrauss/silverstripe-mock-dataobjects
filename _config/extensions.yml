@@ -1,0 +1,51 @@
+---
+Name: mockdataobjects-extensions
+---
+SilverStripe\ORM\FieldType\DBField:
+  extensions:
+    - UncleCheese\MockDataObjects\FieldTypes\MockDBField
+SilverStripe\ORM\FieldType\DBBoolean:
+  extensions:
+    - UncleCheese\MockDataObjects\FieldTypes\MockBooleanField
+SilverStripe\ORM\FieldType\DBDate:
+  extensions:
+    - UncleCheese\MockDataObjects\FieldTypes\MockDateField
+SilverStripe\ORM\FieldType\DBDecimal:
+  extensions:
+    - UncleCheese\MockDataObjects\FieldTypes\MockDecimalField
+SilverStripe\ORM\FieldType\DBFloat:
+  extensions:
+    - UncleCheese\MockDataObjects\FieldTypes\MockFloatField
+SilverStripe\ORM\FieldType\DBInt:
+  extensions:
+    - UncleCheese\MockDataObjects\FieldTypes\MockIntField
+SilverStripe\ORM\FieldType\DBTime:
+  extensions:
+    - UncleCheese\MockDataObjects\FieldTypes\MockTimeField
+SilverStripe\ORM\FieldType\DBYear:
+  extensions:
+    - UncleCheese\MockDataObjects\FieldTypes\MockYearField
+SilverStripe\ORM\FieldType\DBDatetime:
+  extensions:
+    - UncleCheese\MockDataObjects\FieldTypes\MockDatetimeField
+SilverStripe\ORM\FieldType\DBCurrency:
+  extensions:
+    - UncleCheese\MockDataObjects\FieldTypes\MockCurrencyField
+SilverStripe\ORM\FieldType\DBPercentage:
+  extensions:
+    - UncleCheese\MockDataObjects\FieldTypes\MockPercentageField
+SilverStripe\ORM\FieldType\DBDouble:
+  extensions:
+    - UncleCheese\MockDataObjects\FieldTypes\MockDoubleField
+SilverStripe\ORM\FieldType\DBText:
+  extensions:
+    - UncleCheese\MockDataObjects\FieldTypes\MockTextField
+SilverStripe\ORM\FieldType\DBVarchar:
+  extensions:
+    - UncleCheese\MockDataObjects\FieldTypes\MockVarcharField
+SilverStripe\ORM\FieldType\DBHTMLText:
+  extensions:
+    - UncleCheese\MockDataObjects\FieldTypes\MockHTMLTextField
+SilverStripe\ORM\FieldType\DBHTMLVarchar:
+  extensions:
+    - UncleCheese\MockDataObjects\FieldTypes\MockHTMLVarcharField
