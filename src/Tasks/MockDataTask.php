@@ -2,7 +2,6 @@
 
 namespace UncleCheese\MockDataObjects;
 
-
 use Exception;
 use SilverStripe\Dev\BuildTask;
 use SilverStripe\ORM\DataList;
@@ -10,14 +9,15 @@ use UncleCheese\MockDataObjects\Models\MockDataLog;
 use UncleCheese\MockDataObjects\Tasks\MockDataBuilder;
 use SilverStripe\ORM\DataObject;
 
-
-
 /**
  * Defines the task that creates, populates, or cleans up mock data.
  *
  * ex:
  * /dev/tasks/MockDataTask?args[]=generate&args[]=MyDataObject&count=10
  * /dev/tasks/MockDataTask?args[]=cleanup&args[]=MyDataObject
+ *
+ * sake:
+ * vendor/bin/sake dev/tasks/mockdata generate MyDataObject -count 10
  *
  * For command line usage, use the "mockdata" executable contained in the root
  * of the module directory.
@@ -32,6 +32,11 @@ use SilverStripe\ORM\DataObject;
 class MockDataTask extends BuildTask
 {
 
+    /**
+     * $segment
+     * @var string
+     */
+    private static $segment = 'mockdata';
 
     /**
      * @var string The title of the task

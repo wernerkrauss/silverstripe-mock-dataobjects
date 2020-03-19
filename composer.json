@@ -13,7 +13,7 @@
     "require":
     {
 	    "silverstripe/cms": "^4",
-        "fzaninotto/faker": "1.1.*@dev"
+        "fzaninotto/faker": "^1"
 
     },
     "extra": {
