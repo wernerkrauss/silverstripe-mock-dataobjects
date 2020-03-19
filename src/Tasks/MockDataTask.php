@@ -17,7 +17,7 @@ use SilverStripe\ORM\DataObject;
  * /dev/tasks/MockDataTask?args[]=cleanup&args[]=MyDataObject
  *
  * sake:
- * vendor/bin/sake dev/tasks/mockdata generate MyDataObject -count 10
+ * vendor/bin/sake dev/tasks/mockdata generate MyDataObject count=10
  *
  * For command line usage, use the "mockdata" executable contained in the root
  * of the module directory.

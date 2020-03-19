@@ -2,7 +2,6 @@
 
 namespace UncleCheese\MockDataObjects\Extensions;
 
-
 use Faker\Factory;
 use SilverStripe\Assets\Folder;
 use SilverStripe\Assets\Image;
@@ -18,7 +17,8 @@ use SilverStripe\ORM\DB;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Assets\File;
 use UncleCheese\MockDataObjects\Models\MockDataLog;
-
+use Exception;
+use ErrorException;
 
 /**
  * Injects functionality into every {@link DataObject} subclass to populate its
@@ -101,8 +101,24 @@ class MockDataObject extends DataExtension
         $img = fopen('php://temp', 'w+');
 
         if (ini_get('allow_url_fopen')) {
-            $tmpImg = file_get_contents($url);
-            fwrite($img, $tmpImg);
+
+           //set your own error handler before the call
+            set_error_handler(
+                function ($err_severity, $err_msg, $err_file, $err_line, array $err_context) {
+                    throw new ErrorException($err_msg, 0, $err_severity, $err_file, $err_line);
+                },
+                E_WARNING
+            );
+
+            try {
+                $tmpImg = file_get_contents($url);
+                fwrite($img, $tmpImg);
+            } catch (Exception $e) {
+                echo 'Caught exception: ',  $e->getMessage(), "\n";
+            }
+
+            //restore the previous error handler
+            restore_error_handler();
         } else {
             $ch = curl_init($url);
             curl_setopt($ch, CURLOPT_FILE, $img);
@@ -228,7 +244,7 @@ class MockDataObject extends DataExtension
                         $i++;
                     }
                 }
-                $this->owner->$idField = $random_record->ID;
+                $this->owner->$idField = is_object($random_record) ? $random_record->ID : 0;
             }
         }
 
@@ -270,8 +286,10 @@ class MockDataObject extends DataExtension
                     $r->write();
                     $diff++;
                 }
-                $random_records = DataList::create($className)->sort(DB::get_conn()->random())->limit(rand(0,
-                    $create_limit));
+                $random_records = DataList::create($className)->sort(DB::get_conn()->random())->limit(rand(
+                    0,
+                    $create_limit
+                ));
                 $this->owner->$relation()->setByIDList($random_records->column('ID'));
             }
         }
